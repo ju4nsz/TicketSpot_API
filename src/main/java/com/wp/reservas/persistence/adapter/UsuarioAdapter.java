@@ -35,4 +35,16 @@ public class UsuarioAdapter implements UsuarioOutService {
                 .map(usuarioMapper::toUserDatosResponse)
                 .orElseThrow(() -> new UsernameNotFoundException("Credenciales invalidas."));
     }
+
+    @Override
+    public UsuarioDto buscarUsuario(String usuario, String correoElectronico) {
+        return usuarioRepository.findByUsuarioOrCorreoElectronico(usuario, correoElectronico)
+                .map(usuarioMapper::toUsuarioDto)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario o correo electrónico ya existentes."));
+    }
+
+    @Override
+    public UsuarioDto guardarUsuario(UsuarioDto usuarioDto) {
+        return usuarioMapper.toUsuarioDto(usuarioRepository.save(usuarioMapper.toUsuarioEntity(usuarioDto)));
+    }
 }

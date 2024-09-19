@@ -10,4 +10,7 @@ public interface UsuarioOutService {
 
     UsuarioDatosRequest obtenerDatosUsuario(String usuario);
 
+    UsuarioDto buscarUsuario(String usuario, String correoElectronico);
+
+    UsuarioDto guardarUsuario(UsuarioDto usuarioDto);
 }

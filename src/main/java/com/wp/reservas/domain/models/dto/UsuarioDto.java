@@ -4,41 +4,54 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * DTO for {@link com.wp.reservas.persistence.entity.UsuarioEntity}
  */
-@Value
+@Getter
+@Setter
 public class UsuarioDto implements Serializable {
 
-    Integer id;
+    private Integer id;
 
     @Email
     @NotEmpty
     @NotBlank
-    String correoElectronico;
+    private String correoElectronico;
 
     @Size
     @NotEmpty
     @NotBlank
-    String contrasenia;
+    private String contrasenia;
 
     @NotEmpty
     @NotBlank
-    String usuario;
+    private String usuario;
 
     @NotEmpty
     @NotBlank
-    String nombre1;
+    private String nombre1;
 
-    String nombre2;
+    private String nombre2;
 
     @NotEmpty
     @NotBlank
-    String apellido1;
+    private String apellido1;
 
-    String apellido2;
+    private String apellido2;
+
+    private Date fechaNacimiento;
+
+    private Integer edad;
+
+    private Integer idGenero;
+
+    private Integer idRol;
+
 }

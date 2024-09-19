@@ -17,4 +17,6 @@ public interface UsuarioRepository extends CrudRepository<UsuarioEntity, Integer
     @Query(value = "SELECT u.usuario AS usuario, u.contrasenia AS contrasenia, u.id_rol AS idRol FROM public.usuarios u WHERE u.usuario = :usuario", nativeQuery = true)
     Optional<UsuarioDatosProjection> obtenerDatosUsuario(@Param("usuario") String usuario);
 
+    Optional<UsuarioEntity> findByUsuarioOrCorreoElectronico(String usuario, String correoElectronico);
+
 }
