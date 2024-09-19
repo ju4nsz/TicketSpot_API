@@ -2,6 +2,7 @@ package com.wp.reservas.persistence.adapter;
 
 import com.wp.reservas.domain.models.dto.UsuarioDatosRequest;
 import com.wp.reservas.domain.models.dto.UsuarioDto;
+import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
 import com.wp.reservas.domain.service.out.UsuarioOutService;
 import com.wp.reservas.persistence.mapper.UsuarioMapper;
 import com.wp.reservas.persistence.repository.UsuarioRepository;
@@ -37,14 +38,12 @@ public class UsuarioAdapter implements UsuarioOutService {
     }
 
     @Override
-    public UsuarioDto buscarUsuario(String usuario, String correoElectronico) {
-        return usuarioRepository.findByUsuarioOrCorreoElectronico(usuario, correoElectronico)
-                .map(usuarioMapper::toUsuarioDto)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario o correo electrónico ya existentes."));
+    public boolean existeUsuario(String usuario, String correoElectronico) {
+        return usuarioRepository.existsByUsuarioOrCorreoElectronico(usuario, correoElectronico);
     }
 
     @Override
-    public UsuarioDto guardarUsuario(UsuarioDto usuarioDto) {
+    public UsuarioDto guardarUsuario(UsuarioRegistroRequest usuarioDto) {
         return usuarioMapper.toUsuarioDto(usuarioRepository.save(usuarioMapper.toUsuarioEntity(usuarioDto)));
     }
 }

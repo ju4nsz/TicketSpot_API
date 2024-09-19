@@ -1,4 +1,4 @@
-package com.wp.reservas.domain.models.dto;
+package com.wp.reservas.domain.models.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,15 +7,11 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.Date;
 
-/**
- * DTO for {@link com.wp.reservas.persistence.entity.UsuarioEntity}
- */
 @Getter
 @Setter
-public class UsuarioDto implements Serializable {
+public class UsuarioRegistroRequest {
 
     private Integer id;
 
@@ -23,6 +19,11 @@ public class UsuarioDto implements Serializable {
     @NotEmpty
     @NotBlank
     private String correoElectronico;
+
+    @Size
+    @NotEmpty
+    @NotBlank
+    private String contrasenia;
 
     @NotEmpty
     @NotBlank
