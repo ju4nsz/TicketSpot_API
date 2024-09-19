@@ -1,27 +1,19 @@
 package com.wp.reservas.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.Date;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "usuarios")
-public class UsuarioEntity implements UserDetails {
+@Getter
+@Setter
+public class UsuarioEntity {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "correo_electronico")
@@ -45,26 +37,15 @@ public class UsuarioEntity implements UserDetails {
     @Column(name = "apellido2")
     private String apellido2;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    @Column(name = "fecha_nacimiento")
+    private Date fechaNacimiento;
 
-        // TODO Obtener permisos del rol
-        ArrayList<String> permisos = new ArrayList<>();
-        permisos.add("test:obtener");
+    @Column(name = "edad")
+    private Integer edad;
 
-        return permisos
-                .stream()
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-    }
+    @Column(name = "id_genero")
+    private Integer idGenero;
 
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
+    @Column(name = "id_rol")
+    private Integer idRol;
 }

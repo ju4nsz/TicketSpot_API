@@ -1,4 +1,4 @@
-package com.wp.reservas.domain.service.in;
+package com.wp.reservas.domain.service.in.autenticacion;
 
 import com.wp.reservas.domain.models.request.AutenticacionRequest;
 import com.wp.reservas.domain.models.response.AutenticacionResponse;

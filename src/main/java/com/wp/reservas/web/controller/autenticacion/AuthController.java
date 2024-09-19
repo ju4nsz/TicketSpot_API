@@ -2,7 +2,7 @@ package com.wp.reservas.web.controller.autenticacion;
 
 import com.wp.reservas.domain.models.request.AutenticacionRequest;
 import com.wp.reservas.domain.models.response.AutenticacionResponse;
-import com.wp.reservas.domain.service.in.AutenticacionInService;
+import com.wp.reservas.domain.service.in.autenticacion.AutenticacionInService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
