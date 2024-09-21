@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 public class AutenticacionRequest {
 
-    @NotEmpty(message = "El usuario no puede ser nulo.")
-    @Size(max = 30, message = "El usuario debe tener máximo 10 carácteres.")
+    @NotEmpty(message = "No puedes iniciar sesión sin proporcionarnos tu usuario :/")
+    @Size(max = 15, message = "El usuario debe tener máximo 15 carácteres.")
     private String usuario;
 
-    @NotEmpty(message = "La contraseña no puede ser nula.")
+    @NotEmpty(message = "No podemos validar tu información sin tu contraseña :(")
     @Size(max = 20, message = "La contraseña debe tener máximo 20 caracteres.")
     private String contrasenia;
 

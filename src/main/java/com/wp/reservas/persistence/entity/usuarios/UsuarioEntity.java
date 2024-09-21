@@ -1,4 +1,4 @@
-package com.wp.reservas.persistence.entity;
+package com.wp.reservas.persistence.entity.usuarios;
 
 import jakarta.persistence.*;
 import lombok.Getter;

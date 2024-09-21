@@ -2,7 +2,7 @@ package com.wp.reservas.web.filter;
 
 import com.wp.reservas.domain.service.JwtService;
 import com.wp.reservas.domain.models.CustomUserDetails;
-import com.wp.reservas.domain.service.out.UsuarioOutService;
+import com.wp.reservas.domain.service.out.usuarios.UsuarioOutService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

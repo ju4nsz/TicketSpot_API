@@ -1,7 +1,7 @@
 package com.wp.reservas.domain.models.consts;
 
 public class DatosGenerales {
-    public static final Integer EDAD_MINIMA = 16;
+    public static final String CLAVE_P_EDAD_MINIMA = "P_EDAD_MINIMA";
     public static final Integer ID_ROL_USUARIO = 1;
 
 

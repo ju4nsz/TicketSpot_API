@@ -1,7 +1,7 @@
-package com.wp.reservas.persistence.adapter;
+package com.wp.reservas.persistence.adapter.configuraciones;
 
-import com.wp.reservas.domain.service.out.RolOutService;
-import com.wp.reservas.persistence.repository.RolRepository;
+import com.wp.reservas.domain.service.out.configuraciones.RolOutService;
+import com.wp.reservas.persistence.repository.configuraciones.RolRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

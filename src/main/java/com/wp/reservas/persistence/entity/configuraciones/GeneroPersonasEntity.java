@@ -1,4 +1,4 @@
-package com.wp.reservas.persistence.entity;
+package com.wp.reservas.persistence.entity.configuraciones;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

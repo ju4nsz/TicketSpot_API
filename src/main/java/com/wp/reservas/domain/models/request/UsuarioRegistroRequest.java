@@ -1,11 +1,9 @@
 package com.wp.reservas.domain.models.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -13,40 +11,51 @@ import java.util.Date;
 @Setter
 public class UsuarioRegistroRequest {
 
+    @Null
     private Integer id;
 
-    @Email
-    @NotEmpty
-    @NotBlank
+    @Size(max = 50, message = "Tu correo electrónico no debe contener más de 50 cáracteres :/")
+    @Email(message = "El correo electrónico debe ser un email válido, revísalo por favor :)")
+    @NotBlank(message = "No puedes registrarte sin correo electrónico, revísalo por favor :/")
     private String correoElectronico;
 
-    @Size
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "No puedes registrarte sin una contraseña para ingresar la próxima vez, revísalo por favor :/")
     private String contrasenia;
 
-    @NotEmpty
-    @NotBlank
+    @Size(min = 5, max = 15, message = "Tu usuario debe contener entre 5 y 15 cáracteres :/")
+    @NotBlank(message = "No puedes registrarte sin un nombre que te identifique, revísalo por favor :/")
     private String usuario;
 
-    @NotEmpty
-    @NotBlank
+    @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El nombre no puede contener números :/")
+    @NotBlank(message = "Necesitamos saber tu nombre para hablarte con más confianza :)")
     private String nombre1;
 
+    @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El nombre no puede contener números :/")
     private String nombre2;
 
-    @NotEmpty
-    @NotBlank
+    @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El apellido no puede contener números :/")
+    @NotBlank(message = "Necesitamos saber tu nombre completo para hablarte con más confianza :)")
     private String apellido1;
 
+    @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El apellido no puede contener números :/")
     private String apellido2;
 
+
+    @Past(message = "No logramos validar tu fecha de nacimiento :(")
+    @NotNull(message = "Necesitamos saber tu edad para completar el registro :/")
     private Date fechaNacimiento;
 
+    @Null
     private Integer edad;
 
+    @NotNull(message = "Necesitamos saber tu género para completar tu información :/")
     private Integer idGenero;
 
+    @Null
     private Integer idRol;
 
 }

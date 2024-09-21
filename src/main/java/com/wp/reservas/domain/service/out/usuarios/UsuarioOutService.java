@@ -1,7 +1,7 @@
-package com.wp.reservas.domain.service.out;
+package com.wp.reservas.domain.service.out.usuarios;
 
-import com.wp.reservas.domain.models.dto.UsuarioDatosRequest;
-import com.wp.reservas.domain.models.dto.UsuarioDto;
+import com.wp.reservas.domain.models.dto.usuarios.UsuarioDatosRequest;
+import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
 import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
 
 public interface UsuarioOutService {

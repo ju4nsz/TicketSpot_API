@@ -1,6 +1,6 @@
 package com.wp.reservas.web.controller.usuarios;
 
-import com.wp.reservas.domain.models.dto.UsuarioDto;
+import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
 import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
 import com.wp.reservas.domain.service.in.usuarios.UsuarioInService;
 import jakarta.validation.Valid;

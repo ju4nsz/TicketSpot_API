@@ -1,7 +1,7 @@
-package com.wp.reservas.persistence.adapter;
+package com.wp.reservas.persistence.adapter.configuraciones;
 
-import com.wp.reservas.domain.service.out.GeneroPersonasOutService;
-import com.wp.reservas.persistence.repository.GeneroPersonasRepository;
+import com.wp.reservas.domain.service.out.configuraciones.GeneroPersonasOutService;
+import com.wp.reservas.persistence.repository.configuraciones.GeneroPersonasRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,6 @@ public class GeneroPersonaAdapter implements GeneroPersonasOutService {
 
     @Override
     public boolean existeGeneroPersona(Integer id) {
-
         return generoPersonasRepository.existsById(id);
     }
 }

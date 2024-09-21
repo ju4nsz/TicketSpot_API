@@ -1,15 +1,17 @@
 package com.wp.reservas.domain.service.impl.autenticacion;
 
 import com.wp.reservas.domain.models.CustomUserDetails;
-import com.wp.reservas.domain.models.dto.UsuarioDatosRequest;
+import com.wp.reservas.domain.models.dto.usuarios.UsuarioDatosRequest;
+import com.wp.reservas.domain.models.exceptions.HttpGenericException;
 import com.wp.reservas.domain.models.request.AutenticacionRequest;
 import com.wp.reservas.domain.models.response.AutenticacionResponse;
 import com.wp.reservas.domain.models.response.UsuarioDatosResponse;
 import com.wp.reservas.domain.service.JwtService;
 import com.wp.reservas.domain.service.in.autenticacion.AutenticacionInService;
-import com.wp.reservas.domain.service.out.RolOutService;
-import com.wp.reservas.domain.service.out.UsuarioOutService;
+import com.wp.reservas.domain.service.out.configuraciones.RolOutService;
+import com.wp.reservas.domain.service.out.usuarios.UsuarioOutService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,7 +36,7 @@ public class AutenticacionServiceImpl implements AutenticacionInService {
         UsuarioDatosRequest request = usuarioOutService.obtenerDatosUsuario(autenticacionRequest.getUsuario());
 
         if (!passwordEncoder.matches(autenticacionRequest.getContrasenia(), request.getContrasenia())){
-            throw new RuntimeException("Credenciales inválidas.");
+            throw new HttpGenericException(HttpStatus.BAD_REQUEST, "Lo sentimos, no pudimos validar tus credenciales :(");
         }
 
         List<String> permisos = rolOutService.findPermissionsByRoleId(request.getIdRol());
@@ -50,6 +52,11 @@ public class AutenticacionServiceImpl implements AutenticacionInService {
         return AutenticacionResponse.builder()
                 .accessToken(jwt)
                 .usuarioDatosResponse(UsuarioDatosResponse.builder()
+                        .nombre1(request.getNombre1())
+                        .nombre2(request.getNombre2())
+                        .apellido1(request.getApellido2())
+                        .apellido2(request.getApellido2())
+                        .correoElectronico(request.getCorreoElectronico())
                         .usuario(request.getUsuario())
                         .permisos(permisos)
                         .build())

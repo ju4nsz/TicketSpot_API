@@ -1,4 +1,4 @@
-package com.wp.reservas.domain.Util;
+package com.wp.reservas.domain.util;
 
 import org.springframework.stereotype.Component;
 

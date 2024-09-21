@@ -1,6 +1,6 @@
-package com.wp.reservas.persistence.repository;
+package com.wp.reservas.persistence.repository.configuraciones;
 
-import com.wp.reservas.persistence.entity.RoleEntity;
+import com.wp.reservas.persistence.entity.configuraciones.RoleEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
