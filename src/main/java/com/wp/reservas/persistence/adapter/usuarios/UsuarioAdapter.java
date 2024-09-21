@@ -2,11 +2,13 @@ package com.wp.reservas.persistence.adapter.usuarios;
 
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDatosRequest;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
+import com.wp.reservas.domain.models.exceptions.HttpGenericException;
 import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
 import com.wp.reservas.domain.service.out.usuarios.UsuarioOutService;
 import com.wp.reservas.persistence.mapper.usuarios.UsuarioMapper;
 import com.wp.reservas.persistence.repository.usuarios.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
@@ -27,14 +29,14 @@ public class UsuarioAdapter implements UsuarioOutService {
     public UsuarioDto obtenerUsuarioByCorreoElectronico(String correoElectronico) {
         return usuarioRepository.findByCorreoElectronico(correoElectronico)
                 .map(usuarioMapper::toUsuarioDto)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+                .orElseThrow(() -> new HttpGenericException(HttpStatus.NOT_FOUND, "Lo sentimos, no pudimos validar tu usuario :("));
     }
 
     @Override
     public UsuarioDatosRequest obtenerDatosUsuario(String usuario) {
         return usuarioRepository.obtenerDatosUsuario(usuario)
                 .map(usuarioMapper::toUserDatosResponse)
-                .orElseThrow(() -> new UsernameNotFoundException("Credenciales invalidas."));
+                .orElseThrow(() -> new HttpGenericException(HttpStatus.NOT_FOUND, "Lo sentimos, no pudimos validar tu usuario :("));
     }
 
     @Override
