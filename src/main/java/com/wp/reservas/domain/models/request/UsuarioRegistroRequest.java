@@ -3,9 +3,8 @@ package com.wp.reservas.domain.models.request;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -47,7 +46,7 @@ public class UsuarioRegistroRequest {
 
     @Past(message = "No logramos validar tu fecha de nacimiento :(")
     @NotNull(message = "Necesitamos saber tu edad para completar el registro :/")
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
     @Null
     private Integer edad;

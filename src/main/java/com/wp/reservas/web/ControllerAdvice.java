@@ -4,6 +4,7 @@ import com.wp.reservas.domain.models.exceptions.HttpGenericException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
@@ -54,6 +55,16 @@ public class ControllerAdvice {
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(value = HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleMessageNotReadableException(HttpMessageNotReadableException ex){
+        log.error("Ha ocurrido un error MessageNotReadableException {}", ex);
+        ErrorResponse error = ErrorResponse.builder()
+                .codigo(HttpStatus.BAD_REQUEST.value())
+                .mensaje("Ups! Formato de fecha incorrecto :/")
+                .marcaDeTiempo(LocalDateTime.now())
+                .build();
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
     @ExceptionHandler(value = HttpGenericException.class)
     public ResponseEntity<ErrorResponse> handleHttpGenericException(HttpGenericException e) {

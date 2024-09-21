@@ -10,21 +10,11 @@ import java.util.Date;
 @Component
 public class UsuarioUtil {
 
-    public boolean validarFechaNacimiento(Date fechaNacimiento, Integer edadMinima){
-
-        LocalDate fechaNacimientoLocalDate = fechaNacimiento.toInstant()
-                                        .atZone(ZoneId.systemDefault())
-                                        .toLocalDate();
-
-        return Period.between(fechaNacimientoLocalDate,LocalDate.now()).getYears() >= edadMinima;
+    public boolean validarFechaNacimiento(LocalDate fechaNacimiento, Integer edadMinima){
+        return Period.between(fechaNacimiento,LocalDate.now()).getYears() >= edadMinima;
     }
 
-    public Integer retornarEdad(Date fechaNacimiento){
-
-        LocalDate fechaNacimientoLocalDate = fechaNacimiento.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
-
-        return Period.between(fechaNacimientoLocalDate,LocalDate.now()).getYears();
+    public Integer retornarEdad(LocalDate fechaNacimiento){
+        return Period.between(fechaNacimiento,LocalDate.now()).getYears();
     }
 }

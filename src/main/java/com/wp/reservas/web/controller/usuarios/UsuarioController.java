@@ -20,7 +20,7 @@ public class UsuarioController {
     private final UsuarioInService usuarioInService;
 
     @PostMapping("/registrar")
-    public ResponseEntity<UsuarioDto> registrarse(@RequestBody @Valid UsuarioRegistroRequest usuarioRegistroRequest) throws HttpClientErrorException, IllegalAccessException {
+    public ResponseEntity<UsuarioDto> registrarse(@RequestBody @Valid UsuarioRegistroRequest usuarioRegistroRequest) {
         return ResponseEntity.ok(usuarioInService.registrarse(usuarioRegistroRequest));
     }
 }

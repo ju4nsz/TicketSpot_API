@@ -4,5 +4,5 @@ import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
 import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
 
 public interface UsuarioInService {
-    UsuarioDto registrarse(UsuarioRegistroRequest usuarioDto) throws IllegalAccessException;
+    UsuarioDto registrarse(UsuarioRegistroRequest usuarioDto);
 }

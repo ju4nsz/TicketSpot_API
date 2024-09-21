@@ -12,10 +12,12 @@ import com.wp.reservas.domain.service.in.usuarios.UsuarioInService;
 import com.wp.reservas.domain.service.out.configuraciones.GeneroPersonasOutService;
 import com.wp.reservas.domain.service.out.usuarios.UsuarioOutService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioInService {
@@ -30,6 +32,7 @@ public class UsuarioServiceImpl implements UsuarioInService {
     @Override
     public UsuarioDto registrarse(UsuarioRegistroRequest usuarioDto) {
 
+        log.info("Validando si el usuario {} existe...", usuarioDto.getUsuario());
         if (usuarioOutService.existeUsuario(usuarioDto.getUsuario(), usuarioDto.getCorreoElectronico())){
             throw new HttpGenericException(HttpStatus.BAD_REQUEST, "¡Lo sentimos! Ya existe alguien con ese correo electrónico o usuario, podrías intentar con otro :)");
         }

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -42,7 +43,7 @@ public class UsuarioDto implements Serializable {
 
     @NotEmpty(message = "Necesitamos saber tu edad para completar el registro :/")
     @NotBlank(message = "Necesitamos saber tu edad para completar el registro :/")
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
     private Integer edad;
 
