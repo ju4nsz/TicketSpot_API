@@ -17,7 +17,7 @@ public class ParametroAdapter implements ParametroOutService {
 
     @Override
     public ParametroDto obtenerParametro(String clave) {
-        return parametroRepository.findByClaveEqualsIgnoreCase(clave)
+        return parametroRepository.findByClave(clave)
                 .map(parametroMapper::toParametroDto)
                 .orElseThrow(() -> new EntityNotFoundException("No se encontró el parámetro con la clave ingresada :/"));
     }

@@ -1,8 +1,6 @@
 package com.wp.reservas.domain.service.impl.usuarios;
 
-import com.wp.reservas.domain.models.dto.configuraciones.ParametroDto;
 import com.wp.reservas.domain.service.out.configuraciones.ParametroOutService;
-import com.wp.reservas.domain.util.ConfiguracionesUtil;
 import com.wp.reservas.domain.util.UsuarioUtil;
 import com.wp.reservas.domain.models.consts.DatosGenerales;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
@@ -27,7 +25,6 @@ public class UsuarioServiceImpl implements UsuarioInService {
     private final UsuarioUtil usuarioUtil;
     private final PasswordEncoder passwordEncoder;
     private final ParametroOutService parametroOutService;
-    private final ConfiguracionesUtil configuracionesUtil;
 
     @Override
     public UsuarioDto registrarse(UsuarioRegistroRequest usuarioDto) {
@@ -41,12 +38,11 @@ public class UsuarioServiceImpl implements UsuarioInService {
             throw new HttpGenericException(HttpStatus.NOT_FOUND, "¡Lo sentimos! No encontramos el género seleccionado en nuestros datos :/");
         }
 
-        // ParametroDto parametroEdadMinima = parametroOutService.obtenerParametro(DatosGenerales.CLAVE_P_EDAD_MINIMA);
-        // parametroEdadMinima = configuracionesUtil.devolverParametro(parametroEdadMinima);
+        Integer edadMinima = Integer.parseInt(parametroOutService.obtenerParametro(DatosGenerales.CLAVE_P_EDAD_MINIMA).getValor());
 
-        if(!usuarioUtil.validarFechaNacimiento(usuarioDto.getFechaNacimiento(), 16)){
-            throw new HttpGenericException(HttpStatus.BAD_REQUEST,
-                    "¡Lo sentimos! Para poder ingresar a nuestra app, debes ser mayor de " + 16 + " años :/");
+        if(!usuarioUtil.validarFechaNacimiento(usuarioDto.getFechaNacimiento(), edadMinima)){
+            throw new HttpGenericException(HttpStatus.NOT_ACCEPTABLE,
+                    "¡Lo sentimos! Para poder ingresar a nuestra app, debes ser mayor de " + edadMinima + " años :/");
         }
 
         usuarioDto.setIdRol(DatosGenerales.ID_ROL_USUARIO);

@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface ParametroRepository extends CrudRepository<ParametroEntity, Integer> {
 
-    Optional<ParametroEntity> findByClaveEqualsIgnoreCase(String clave);
+    Optional<ParametroEntity> findByClave(String clave);
 
 }
