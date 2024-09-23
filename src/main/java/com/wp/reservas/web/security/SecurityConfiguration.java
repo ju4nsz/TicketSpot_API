@@ -37,6 +37,7 @@ public class SecurityConfiguration {
     public static final String[] URI_WHITE_LIST = new String[] {
             "/api/v1/autenticacion/iniciar-sesion",
             "/api/v1/usuarios/registrar",
+            "/api/v1/configuracion"
     };
 
     @Bean
