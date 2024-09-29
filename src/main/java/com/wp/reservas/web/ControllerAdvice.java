@@ -60,7 +60,7 @@ public class ControllerAdvice {
         log.error("Ha ocurrido un error MessageNotReadableException {}", ex);
         ErrorResponse error = ErrorResponse.builder()
                 .codigo(HttpStatus.BAD_REQUEST.value())
-                .mensaje("Ups! Formato de fecha incorrecto :/")
+                .mensaje("Ups! No pudimos leer la información :/")
                 .marcaDeTiempo(LocalDateTime.now())
                 .build();
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Table(name = "generos_personas")
 @Getter
 @Setter
-public class GeneroPersonasEntity {
+public class GeneroPersonaEntity {
 
     @Id
     @Column(name = "id")

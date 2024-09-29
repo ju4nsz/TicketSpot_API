@@ -64,28 +64,30 @@ public class AutenticacionServiceImpl implements AutenticacionInService {
 
     private List<MenuOpcionesDto> retornarMenu(List<MenuDto> menus) {
 
-        // Agrupar los menús hijos por su idPadre
+        // Obtener los hijos agrupados por padre
         Map<Integer, List<MenuDto>> hijosAgrupadosPorPadre = menus.stream()
                 .filter(menu -> menu.getIdPadre() != null)
                 .collect(Collectors.groupingBy(MenuDto::getIdPadre));
 
-        // Obtener los menús raíz (padres sin idPadre)
+        // Obtener los padres del menú principal
         List<MenuDto> padres = menus.stream()
                 .filter(menu -> menu.getIdPadre() == null)
                 .toList();
 
-        // Crear la lista final de menús con la jerarquía
+        // Asignar los hijos recursivamente para cada padre raíz
         return padres.stream()
                 .map(padre -> asignarHijosRecursivamente(new MenuOpcionesDto(padre, new ArrayList<>()), hijosAgrupadosPorPadre))
                 .toList();
     }
 
     private MenuOpcionesDto asignarHijosRecursivamente(MenuOpcionesDto menu, Map<Integer, List<MenuDto>> hijosAgrupadosPorPadre) {
-        // Obtener los hijos directos del menú actual
+
+        // Obtenemos los hijos del menú actual (menu)
         List<MenuDto> hijos = hijosAgrupadosPorPadre.get(menu.getPadre().getId());
 
-        // Si hay hijos, asignarlos recursivamente
+        // Verificamos si el menú actual tiene hijos, si los tiene los asignamos
         if (hijos != null && !hijos.isEmpty()) {
+            // Hacemos lo mismo nuevamente con cada hijo
             List<MenuOpcionesDto> listaHijos = hijos.stream()
                     .map(hijo -> asignarHijosRecursivamente(new MenuOpcionesDto(hijo, new ArrayList<>()), hijosAgrupadosPorPadre))
                     .toList();
@@ -94,7 +96,6 @@ public class AutenticacionServiceImpl implements AutenticacionInService {
             menu.setHijos(listaHijos);
         }
 
-        // Devolver el menú con sus hijos asignados
         return menu;
     }
 

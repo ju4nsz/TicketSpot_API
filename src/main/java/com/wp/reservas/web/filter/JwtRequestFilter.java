@@ -19,7 +19,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -50,11 +49,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
                 var authorities = permisos.stream()
                         .map(SimpleGrantedAuthority::new)
-                        .collect(Collectors.toList());
+                        .toList();
 
                 List<GrantedAuthority> grantedAuthorities = new ArrayList<>(authorities);
-                grantedAuthorities.stream()
-                        .forEach(System.out::println);
 
                 CustomUserDetails userDetails = new CustomUserDetails(username, "", grantedAuthorities);
 
