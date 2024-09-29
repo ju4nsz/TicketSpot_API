@@ -23,4 +23,5 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDto> registrarse(@RequestBody @Valid UsuarioRegistroRequest usuarioRegistroRequest) {
         return ResponseEntity.ok(usuarioInService.registrarse(usuarioRegistroRequest));
     }
+
 }
