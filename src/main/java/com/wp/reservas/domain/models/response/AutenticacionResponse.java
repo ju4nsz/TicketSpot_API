@@ -14,6 +14,6 @@ public class AutenticacionResponse {
 
     private String accessToken;
     private UsuarioDatosResponse usuarioDatosResponse;
-    private List<MenuDto> menuOpciones;
+    private MenuOpcionesResponse menuOpciones;
 
 }

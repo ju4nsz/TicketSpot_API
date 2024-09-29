@@ -3,6 +3,7 @@ package com.wp.reservas.domain.service.impl.autenticacion;
 import com.wp.reservas.domain.models.dto.configuraciones.MenuDto;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDatosRequest;
 import com.wp.reservas.domain.models.response.AutenticacionResponse;
+import com.wp.reservas.domain.models.response.MenuOpcionesResponse;
 import com.wp.reservas.domain.models.response.UsuarioDatosResponse;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AutenticacionBuilder {
 
-    public static AutenticacionResponse construirAuthResponse(String jwt, UsuarioDatosRequest request, List<String> permisos, List<MenuDto> menuOpciones){
+    public static AutenticacionResponse construirAuthResponse(String jwt, UsuarioDatosRequest request, List<String> permisos, MenuOpcionesResponse menuOpciones){
         return AutenticacionResponse.builder()
                 .accessToken(jwt)
                 .usuarioDatosResponse(UsuarioDatosResponse.builder()
