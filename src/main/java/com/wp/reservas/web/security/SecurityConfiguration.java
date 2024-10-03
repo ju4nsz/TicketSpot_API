@@ -34,7 +34,7 @@ public class SecurityConfiguration {
     /*
     * Lista blanca
     * */
-    public static final String[] URI_WHITE_LIST = new String[] {
+    protected static final String[] URI_WHITE_LIST = new String[] {
             "/api/v1/autenticacion/iniciar-sesion",
             "/api/v1/usuarios/registrar",
             "/api/v1/configuracion"
@@ -46,6 +46,17 @@ public class SecurityConfiguration {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(a -> a.requestMatchers(URI_WHITE_LIST).permitAll().anyRequest().authenticated())
+                .exceptionHandling(e -> e.authenticationEntryPoint((request, response, ex) -> {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
+                    Map<String, String> errorData = Map.of(
+                            "status", "401",
+                            "message", "Sesión inválida, inicie sesión nuevamente.");
+                    byte[] body = new ObjectMapper().writeValueAsBytes(errorData);
+
+                    response.getOutputStream().write(body);
+                }))
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
