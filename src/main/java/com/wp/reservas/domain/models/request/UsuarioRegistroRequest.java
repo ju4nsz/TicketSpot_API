@@ -26,21 +26,21 @@ public class UsuarioRegistroRequest {
     private String usuario;
 
     @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
-    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El nombre no puede contener números :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$", message = "El apellido no puede contener números o caracteres especiales :/")
     @NotBlank(message = "Necesitamos saber tu nombre para hablarte con más confianza :)")
     private String nombre1;
 
     @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
-    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El nombre no puede contener números :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$", message = "El apellido no puede contener números o caracteres especiales :/")
     private String nombre2;
 
     @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
-    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El apellido no puede contener números :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$", message = "El apellido no puede contener números o caracteres especiales :/")
     @NotBlank(message = "Necesitamos saber tu nombre completo para hablarte con más confianza :)")
     private String apellido1;
 
     @Size(min = 3, max = 15, message = "Tu nombre debe contener entre 3 y 15 cáracteres :/")
-    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$", message = "El apellido no puede contener números :/")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$", message = "El apellido no puede contener números o caracteres especiales :/")
     private String apellido2;
 
 
