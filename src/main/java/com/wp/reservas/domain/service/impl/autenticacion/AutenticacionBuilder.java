@@ -23,7 +23,7 @@ public class AutenticacionBuilder {
                 .usuarioDatosResponse(UsuarioDatosResponse.builder()
                         .nombre1(request.getNombre1())
                         .nombre2(request.getNombre2())
-                        .apellido1(request.getApellido2())
+                        .apellido1(request.getApellido1())
                         .apellido2(request.getApellido2())
                         .correoElectronico(request.getCorreoElectronico())
                         .usuario(request.getUsuario())
