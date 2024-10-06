@@ -15,5 +15,6 @@ public class ConfiguracionResponse {
 
     private List<MensajeDto> mensajesBienvenida;
     private List<GeneroPersonaDto> generosPersonas;
+    private Integer edadMinima;
 
 }
