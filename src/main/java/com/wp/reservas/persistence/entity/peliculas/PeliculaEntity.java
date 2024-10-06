@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "peliculas")
 @Getter
@@ -23,7 +25,12 @@ public class PeliculaEntity {
     @Column(name = "edad_minima")
     private Integer edadMinima;
 
-    @Column(name = "id_genero")
-    private Integer idGenero;
+    @ManyToMany
+    @JoinTable(
+            name = "peliculas_generos",
+            joinColumns = @JoinColumn(name = "id_pelicula"),
+            inverseJoinColumns = @JoinColumn(name = "id_genero")
+    )
+    private List<GeneroPeliculaEntity> generos;
 
 }

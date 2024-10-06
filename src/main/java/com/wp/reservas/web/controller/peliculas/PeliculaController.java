@@ -1,6 +1,7 @@
 package com.wp.reservas.web.controller.peliculas;
 
 import com.wp.reservas.domain.models.dto.peliculas.PeliculaDto;
+import com.wp.reservas.domain.models.request.peliculas.PeliculaRequest;
 import com.wp.reservas.domain.service.in.peliculas.PeliculaInService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,9 @@ public class PeliculaController {
     private final PeliculaInService peliculaInService;
 
     @PreAuthorize("hasAuthority('pelicula:crear')")
-    @PostMapping("/crear")
-    public ResponseEntity<PeliculaDto> crearPelicula(@RequestBody @Valid PeliculaDto peliculaDto){
-        return ResponseEntity.ok(peliculaInService.crearPelicula(peliculaDto));
+    @PostMapping
+    public ResponseEntity<PeliculaDto> crearPelicula(@RequestBody @Valid PeliculaRequest request){
+        return ResponseEntity.ok(peliculaInService.crearPelicula(request));
     }
 
     @PreAuthorize("hasAuthority('pelicula:obtener-peliculas')")

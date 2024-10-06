@@ -8,6 +8,9 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.stream.StreamSupport;
+
 @Repository
 @RequiredArgsConstructor
 public class GeneroPeliculaAdapter implements GeneroPeliculaOutService {
@@ -25,6 +28,13 @@ public class GeneroPeliculaAdapter implements GeneroPeliculaOutService {
     @Override
     public boolean existeById(Integer idGeneroPelicula) {
         return generoPeliculaRepository.existsById(idGeneroPelicula);
+    }
+
+    @Override
+    public List<GeneroPeliculaDto> obtenerGeneros(List<Integer> ids){
+        return StreamSupport.stream(generoPeliculaRepository.findAllById(ids).spliterator(), false)
+                .map(generoPeliculaMapper::toGeneroPeliculaDto)
+                .toList();
     }
 
 }

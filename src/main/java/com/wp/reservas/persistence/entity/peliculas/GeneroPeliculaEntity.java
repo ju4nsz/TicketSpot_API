@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "generos_peliculas")
 @Getter
@@ -22,5 +24,8 @@ public class GeneroPeliculaEntity {
 
     @Column(name = "activo")
     private boolean activo;
+
+    @ManyToMany(mappedBy = "generos")
+    private List<PeliculaEntity> peliculas;
 
 }
