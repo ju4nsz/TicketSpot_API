@@ -31,7 +31,7 @@ public class PeliculaServiceImpl implements PeliculaInService {
     public PeliculaDto crearPelicula(PeliculaRequest request) {
 
         log.info("Obteniendo los géneros recibidos...");
-        List<GeneroPeliculaDto> generosPeliculas = generoPeliculaOutService.obtenerGeneros(request.getGeneros());
+        List<GeneroPeliculaDto> generosPeliculas = generoPeliculaOutService.obtenerGenerosPorIds(request.getGeneros());
         if (generosPeliculas.size() != request.getGeneros().size()){
             log.error("Se ha intentado ingresar un género que no existe...");
             throw new HttpGenericException(HttpStatus.NOT_FOUND, "¡Ups! Has intentado ingresar un género que no tenemos :/");

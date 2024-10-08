@@ -18,7 +18,7 @@ public class AuthController {
 
     private final AutenticacionInService autenticacionInService;
 
-    @PostMapping("/iniciar-sesion")
+    @PostMapping
     public ResponseEntity<AutenticacionResponse> iniciarSesion(@RequestBody @Valid AutenticacionRequest request){
         return ResponseEntity.ok(autenticacionInService.iniciarSesion(request));
     }

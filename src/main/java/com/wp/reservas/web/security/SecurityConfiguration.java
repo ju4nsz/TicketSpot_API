@@ -35,8 +35,8 @@ public class SecurityConfiguration {
     * Lista blanca
     * */
     protected static final String[] URI_WHITE_LIST = new String[] {
-            "/api/v1/autenticacion/iniciar-sesion",
-            "/api/v1/usuarios/registrar",
+            "/api/v1/autenticacion",
+            "/api/v1/usuarios",
             "/api/v1/configuracion"
     };
 

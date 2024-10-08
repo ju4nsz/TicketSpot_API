@@ -31,8 +31,15 @@ public class GeneroPeliculaAdapter implements GeneroPeliculaOutService {
     }
 
     @Override
-    public List<GeneroPeliculaDto> obtenerGeneros(List<Integer> ids){
-        return StreamSupport.stream(generoPeliculaRepository.findAllById(ids).spliterator(), false)
+    public List<GeneroPeliculaDto> obtenerGenerosPorIds(List<Integer> ids){
+        return generoPeliculaRepository.findAllByIdInAndActivo(ids, true).stream()
+                .map(generoPeliculaMapper::toGeneroPeliculaDto)
+                .toList();
+    }
+
+    @Override
+    public List<GeneroPeliculaDto> obtenerGenerosActivos() {
+        return generoPeliculaRepository.findAllByActivo(true).stream()
                 .map(generoPeliculaMapper::toGeneroPeliculaDto)
                 .toList();
     }

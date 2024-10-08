@@ -10,6 +10,8 @@ public interface GeneroPeliculaOutService {
 
     boolean existeById(Integer idGeneroPelicula);
 
-    List<GeneroPeliculaDto> obtenerGeneros(List<Integer> ids);
+    List<GeneroPeliculaDto> obtenerGenerosPorIds(List<Integer> ids);
+
+    List<GeneroPeliculaDto> obtenerGenerosActivos();
 
 }
