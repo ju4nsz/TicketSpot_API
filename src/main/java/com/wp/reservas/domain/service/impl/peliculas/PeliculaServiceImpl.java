@@ -9,6 +9,8 @@ import com.wp.reservas.domain.service.out.peliculas.GeneroPeliculaOutService;
 import com.wp.reservas.domain.service.out.peliculas.PeliculaOutService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +54,9 @@ public class PeliculaServiceImpl implements PeliculaInService {
     }
 
     @Override
-    public List<PeliculaDto> obtenerPeliculas() {
-        return peliculaOutService.obtenerPeliculas();
+    public Page<PeliculaDto> obtenerPeliculas(Pageable pageable) {
+
+
+        return peliculaOutService.obtenerPeliculas(pageable);
     }
 }

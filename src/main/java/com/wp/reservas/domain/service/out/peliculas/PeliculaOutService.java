@@ -1,6 +1,8 @@
 package com.wp.reservas.domain.service.out.peliculas;
 
 import com.wp.reservas.domain.models.dto.peliculas.PeliculaDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -10,6 +12,6 @@ public interface PeliculaOutService {
 
     boolean existePorNombre(String nombrePelicula);
 
-    List<PeliculaDto> obtenerPeliculas();
+    Page<PeliculaDto> obtenerPeliculas(Pageable pageable);
 
 }
