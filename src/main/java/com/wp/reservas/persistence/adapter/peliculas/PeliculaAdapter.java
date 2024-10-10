@@ -2,10 +2,15 @@ package com.wp.reservas.persistence.adapter.peliculas;
 
 import com.wp.reservas.domain.models.dto.peliculas.PeliculaDto;
 import com.wp.reservas.domain.service.out.peliculas.PeliculaOutService;
+import com.wp.reservas.persistence.entity.peliculas.PeliculaEntity;
 import com.wp.reservas.persistence.mapper.peliculas.PeliculaMapper;
 import com.wp.reservas.persistence.repository.peliculas.PeliculaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 import java.util.stream.StreamSupport;
@@ -28,9 +33,8 @@ public class PeliculaAdapter implements PeliculaOutService {
     }
 
     @Override
-    public List<PeliculaDto> obtenerPeliculas() {
-        return StreamSupport.stream(peliculaRepository.findAll().spliterator(), false)
-                .map(peliculaMapper::toPeliculaDto)
-                .toList();
+    public Page<PeliculaDto> obtenerPeliculas(Pageable pageable) {
+        Page<PeliculaEntity> peliculasPage = peliculaRepository.findAll(pageable);
+        return peliculasPage.map(peliculaMapper::toPeliculaDto);
     }
 }
