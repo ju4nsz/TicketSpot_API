@@ -40,7 +40,7 @@ public class PeliculaServiceImpl implements PeliculaInService {
         }
 
         log.info("Verificando que la película {} no exista...", request.getNombre());
-        if (peliculaOutService.existePorNombre(request.getNombre())){
+        if (request.getId() == null && peliculaOutService.existePorNombre(request.getNombre())){
             throw new HttpGenericException(HttpStatus.BAD_REQUEST, "¡Ups! Ya hay una película con ese nombre :/");
         }
 
@@ -55,8 +55,6 @@ public class PeliculaServiceImpl implements PeliculaInService {
 
     @Override
     public Page<PeliculaDto> obtenerPeliculas(Pageable pageable) {
-
-
         return peliculaOutService.obtenerPeliculas(pageable);
     }
 }

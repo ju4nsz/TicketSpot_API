@@ -13,18 +13,18 @@ import java.util.List;
 @Setter
 public class PeliculaRequest {
 
-    Integer id;
+    private Integer id;
 
     @NotEmpty(message = "¡Lo sentimos! No puedes crear una película sin nombre :/")
     @Size(min = 3, max = 25, message = "¡Ups! El nombre de la película debe tener entre 3 y 25 carácteres :)")
-    String nombre;
+    private String nombre;
 
     @Size(min = 10, max = 255, message = "¡Ups! La descripción debe tener entre 10 y 255 carácteres :/")
-    String descripcion;
+    private String descripcion;
 
     @NotNull(message = "¡Espera un momento! La película necesita tener una edad mínima para poder verla :)")
-    Integer edadMinima;
+    private Integer edadMinima;
 
-    List<Integer> generos;
+    private List<Integer> generos;
 
 }
