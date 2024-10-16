@@ -26,6 +26,7 @@ public class ConfiguracionServiceImpl implements ConfiguracionInService {
                 .mensajesBienvenida(mensajeOutService.obtenerMensajesBienvenida(DatosGenerales.ID_TIPO_BIENVENIDA))
                 .generosPeliculas(generoPeliculaOutService.obtenerGenerosActivos())
                 .edadMinima(Integer.parseInt(parametroOutService.obtenerParametro(DatosGenerales.CLAVE_P_EDAD_MINIMA).getValor()))
+                .maxFotosPorPelicula(Integer.parseInt(parametroOutService.obtenerParametro(DatosGenerales.CLAVE_MAX_FOTOS_POR_PELICULA).getValor()))
                 .build();
     }
 

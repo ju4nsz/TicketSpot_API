@@ -17,6 +17,7 @@ public class ConfiguracionResponse {
     private List<MensajeDto> mensajesBienvenida;
     private List<GeneroPersonaDto> generosPersonas;
     private List<GeneroPeliculaDto> generosPeliculas;
+    private Integer maxFotosPorPelicula;
     private Integer edadMinima;
 
 }
