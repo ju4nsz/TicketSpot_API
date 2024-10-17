@@ -29,7 +29,6 @@ public class PeliculaController {
     @GetMapping
     public ResponseEntity<Page<PeliculaDto>> obtenerPeliculas(@PageableDefault(page = 0, size = 10) Pageable pageable){
         return ResponseEntity.ok(peliculaInService.obtenerPeliculas(pageable));
-
     }
 
 }

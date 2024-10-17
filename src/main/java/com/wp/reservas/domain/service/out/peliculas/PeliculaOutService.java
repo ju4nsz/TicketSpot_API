@@ -14,4 +14,6 @@ public interface PeliculaOutService {
 
     Page<PeliculaDto> obtenerPeliculas(Pageable pageable);
 
+    boolean existePorId(Integer id);
+
 }

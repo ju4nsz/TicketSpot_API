@@ -37,4 +37,9 @@ public class PeliculaAdapter implements PeliculaOutService {
         Page<PeliculaEntity> peliculasPage = peliculaRepository.findAll(pageable);
         return peliculasPage.map(peliculaMapper::toPeliculaDto);
     }
+
+    @Override
+    public boolean existePorId(Integer id) {
+        return peliculaRepository.existsById(id);
+    }
 }
