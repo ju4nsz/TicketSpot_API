@@ -2,7 +2,7 @@ package com.wp.reservas.persistence.mapper.usuarios;
 
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDatosRequest;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
-import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
+import com.wp.reservas.domain.models.request.usuarios.UsuarioRegistroRequest;
 import com.wp.reservas.persistence.entity.usuarios.UsuarioEntity;
 import com.wp.reservas.persistence.projection.UsuarioDatosProjection;
 import org.mapstruct.Mapper;

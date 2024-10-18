@@ -1,5 +1,6 @@
 package com.wp.reservas.domain.service.impl.peliculas;
 
+import com.wp.reservas.domain.Util.ArchivoUtil;
 import com.wp.reservas.domain.models.consts.DatosGenerales;
 import com.wp.reservas.domain.models.exceptions.HttpGenericException;
 import com.wp.reservas.domain.models.request.peliculas.PeliculaFotoRequest;
@@ -10,7 +11,6 @@ import com.wp.reservas.domain.service.out.peliculas.PeliculaFotoOutService;
 import com.wp.reservas.domain.service.out.peliculas.PeliculaOutService;
 import com.wp.reservas.domain.strategy.validacion.ExtensionesTipos;
 import com.wp.reservas.domain.strategy.validacion.FileValidator;
-import com.wp.reservas.domain.util.ArchivoUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.antlr.v4.runtime.misc.Triple;
@@ -36,6 +36,7 @@ public class PeliculaFotoServiceImpl implements PeliculaFotoInService {
     public GenericResponse subir(PeliculaFotoRequest request) {
 
         log.info("Validando que la película con id {} exista...", request.getIdPelicula());
+
         if (!peliculaOutService.existePorId(request.getIdPelicula())){
             throw new HttpGenericException(HttpStatus.BAD_REQUEST, "¡Lo sentimos! No pudimos encontrar la película que buscaste :/");
         }
@@ -59,7 +60,7 @@ public class PeliculaFotoServiceImpl implements PeliculaFotoInService {
         Integer cantidad = fotosSubidas + fotos.size();
 
         if (cantidad > maxFotosPorPelicula) {
-            throw new HttpGenericException(HttpStatus.BAD_REQUEST, "¡Lo sentimos! Solo se pueden subir " + maxFotosPorPelicula + " fotos para cada película :/");
+             throw new HttpGenericException(HttpStatus.BAD_REQUEST, "¡Lo sentimos! Solo se pueden subir " + maxFotosPorPelicula + " fotos para cada película :/");
         }
     }
 
@@ -89,7 +90,7 @@ public class PeliculaFotoServiceImpl implements PeliculaFotoInService {
             }
 
             log.info("Guardando foto {}", f.getOriginalFilename());
-            Triple<String, String, String> respuesta = archivoUtil.subirArchivo(bytes, idPelicula.toString(), f.getOriginalFilename());
+            Triple<String, String, String> respuesta = archivoUtil.subirArchivo(bytes, idPelicula.toString(), f.getOriginalFilename(),"Peliculas");
 
             log.info("Guardando datos de la foto {} en la base de datos...", f.getOriginalFilename());
             peliculaFotoOutService.guardar(PeliculaBuilder.construirDtoFoto(idPelicula, respuesta.b, respuesta.a));

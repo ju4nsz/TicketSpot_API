@@ -5,6 +5,5 @@ import com.wp.reservas.domain.models.response.GenericResponse;
 
 public interface PeliculaFotoInService {
 
-
     GenericResponse subir(PeliculaFotoRequest request);
 }

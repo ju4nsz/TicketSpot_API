@@ -3,7 +3,7 @@ package com.wp.reservas.persistence.adapter.usuarios;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDatosRequest;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
 import com.wp.reservas.domain.models.exceptions.HttpGenericException;
-import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
+import com.wp.reservas.domain.models.request.usuarios.UsuarioRegistroRequest;
 import com.wp.reservas.domain.service.out.usuarios.UsuarioOutService;
 import com.wp.reservas.persistence.mapper.usuarios.UsuarioMapper;
 import com.wp.reservas.persistence.repository.usuarios.UsuarioRepository;
@@ -47,5 +47,10 @@ public class UsuarioAdapter implements UsuarioOutService {
     @Override
     public UsuarioDto guardarUsuario(UsuarioRegistroRequest usuarioDto) {
         return usuarioMapper.toUsuarioDto(usuarioRepository.save(usuarioMapper.toUsuarioEntity(usuarioDto)));
+    }
+
+    @Override
+    public boolean existeUsuario(Integer id) {
+        return usuarioRepository.existsById(id);
     }
 }

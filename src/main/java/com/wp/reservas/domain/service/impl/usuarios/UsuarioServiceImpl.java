@@ -5,7 +5,7 @@ import com.wp.reservas.domain.util.UsuarioUtil;
 import com.wp.reservas.domain.models.consts.DatosGenerales;
 import com.wp.reservas.domain.models.dto.usuarios.UsuarioDto;
 import com.wp.reservas.domain.models.exceptions.HttpGenericException;
-import com.wp.reservas.domain.models.request.UsuarioRegistroRequest;
+import com.wp.reservas.domain.models.request.usuarios.UsuarioRegistroRequest;
 import com.wp.reservas.domain.service.in.usuarios.UsuarioInService;
 import com.wp.reservas.domain.service.out.configuraciones.GeneroPersonasOutService;
 import com.wp.reservas.domain.service.out.usuarios.UsuarioOutService;

@@ -1,4 +1,4 @@
-package com.wp.reservas.domain.util;
+package com.wp.reservas.domain.Util;
 
 import com.wp.reservas.domain.models.exceptions.HttpGenericException;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +34,9 @@ public class ArchivoUtil {
         }
     }
 
-    public Triple<String, String, String> subirArchivo(byte [] file, String sufijo, String archivoNombre) {
+    public Triple<String, String, String> subirArchivo(byte [] file, String sufijo, String archivoNombre, String carpeta) {
 
-        String ruta = "peliculas/fotos/" + sufijo;
+        String ruta = carpeta+"/fotos/" + sufijo;
         archivoNombre = archivoNombre.replaceAll("[\\\\/:*?\"<>|]", "_");
         String rutaArchivo = archivoNombre;
         Path pathDirectorio = Paths.get(rutaRaiz).resolve(ruta);

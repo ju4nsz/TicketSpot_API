@@ -1,4 +1,4 @@
-package com.wp.reservas.domain.models.request;
+package com.wp.reservas.domain.models.request.usuarios;
 
 import jakarta.validation.constraints.*;
 import lombok.Getter;
